@@ -46,6 +46,7 @@ namespace ThirdEye.DAL
             foreach (var obj in positions)
             {
                 Position objects1 = new Position();
+                objects1.Id = obj.Id;
                 objects1.positionId = obj.PositionId;
                 objects1.shape = obj.Shape;
                 objects1.x = obj.X;
@@ -78,6 +79,20 @@ namespace ThirdEye.DAL
             _db.SaveChanges();
 
             return true;
+        }
+        public bool UpdatePositions(Position position)
+        {
+            if (position != null)
+            {
+                _db.Database.EnsureCreated();
+                var positions = _db.PositionMasters.FirstOrDefault(x => x.Id == position.Id);
+                positions.X = position.x;
+                positions.Y = position.y;
+                _db.SaveChanges();
+                return true;
+            }
+            return false;
+            
         }
     }
 }

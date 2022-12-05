@@ -43,5 +43,12 @@ namespace ThirdEye.API.Controllers
             var res = _masterDal.SavePositions(data);
             return res;
         }
+        [HttpPost(Name = "UpdatePositions/{positions}")]
+        public bool UpdatePositions(string positions)
+        {
+            var data = JsonConvert.DeserializeObject<Position>(positions);
+            var res = _masterDal.UpdatePositions(data);
+            return res;
+        }
     }
 }

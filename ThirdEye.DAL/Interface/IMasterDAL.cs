@@ -13,6 +13,6 @@ namespace ThirdEye.DAL
         public IList<string> GetPositions();
         public IList<Position> GetPositionsById(string Id);
         public bool SavePositions(List<Position> positions);
-
+        public bool UpdatePositions(Position positions);
     }
 }
